@@ -42,11 +42,11 @@ jobs:
 
       - name: Docker Login to ACR
         run: |
-          az acr login --name acr${{ vars.APELLIDO }}
+          az acr login --name acr${{ secrets.APELLIDO }}
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_NAME=acr${{ vars.APELLIDO }}.azurecr.io/my-nodejs-app
+          IMAGE_NAME=acr${{ secrets.APELLIDO }}.azurecr.io/my-nodejs-app
           TAG=${{ steps.short.outputs.short_sha }}
           echo "Construyendo imagen $IMAGE_NAME:$TAG"
           docker build -t $IMAGE_NAME:$TAG .
@@ -72,11 +72,11 @@ jobs:
   
       - name: Establecer variables
         run: |
-          IMAGE_NAME=acr${{ vars.APELLIDO }}.azurecr.io/my-nodejs-app
+          IMAGE_NAME=acr${{ secrets.APELLIDO }}.azurecr.io/my-nodejs-app
           TAG=${{ steps.short.outputs.short_sha }}
-          APP_NAME=aca-ms-${{ vars.APELLIDO }}-${{ vars.ENV }}
-          RESOURCE_GROUP=rg-cicd-terraform-app-${{ vars.APELLIDO }}
-          ACR_NAME=acr${{ vars.APELLIDO }}
+          APP_NAME=aca-ms-${{ secrets.APELLIDO }}-${{ vars.ENV }}
+          RESOURCE_GROUP=rg-cicd-terraform-app-${{ secrets.APELLIDO }}
+          ACR_NAME=acr${{ secrets.APELLIDO }}
 
           echo "IMAGE=$IMAGE_NAME:$TAG" >> $GITHUB_ENV
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
@@ -140,11 +140,11 @@ jobs:
   
       - name: Establecer variables
         run: |
-          IMAGE_NAME=acr${{ vars.APELLIDO }}.azurecr.io/my-nodejs-app
+          IMAGE_NAME=acr${{ secrets.APELLIDO }}.azurecr.io/my-nodejs-app
           TAG=${{ steps.short.outputs.short_sha }}
-          APP_NAME=aca-ms-${{ vars.APELLIDO }}-${{ vars.ENV }}
-          RESOURCE_GROUP=rg-cicd-terraform-app-${{ vars.APELLIDO }}
-          ACR_NAME=acr${{ vars.APELLIDO }}
+          APP_NAME=aca-ms-${{ secrets.APELLIDO }}-${{ vars.ENV }}
+          RESOURCE_GROUP=rg-cicd-terraform-app-${{ secrets.APELLIDO }}
+          ACR_NAME=acr${{ secrets.APELLIDO }}
 
           echo "IMAGE=$IMAGE_NAME:$TAG" >> $GITHUB_ENV
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
@@ -207,11 +207,11 @@ jobs:
   
       - name: Establecer variables
         run: |
-          IMAGE_NAME=acr${{ vars.APELLIDO }}.azurecr.io/my-nodejs-app
+          IMAGE_NAME=acr${{ secrets.APELLIDO }}.azurecr.io/my-nodejs-app
           TAG=${{ steps.short.outputs.short_sha }}
-          APP_NAME=aca-ms-${{ vars.APELLIDO }}-${{ vars.ENV }}
-          RESOURCE_GROUP=rg-cicd-terraform-app-${{ vars.APELLIDO }}
-          ACR_NAME=acr${{ vars.APELLIDO }}
+          APP_NAME=aca-ms-${{ secrets.APELLIDO }}-${{ vars.ENV }}
+          RESOURCE_GROUP=rg-cicd-terraform-app-${{ secrets.APELLIDO }}
+          ACR_NAME=acr${{ secrets.APELLIDO }}
 
           echo "IMAGE=$IMAGE_NAME:$TAG" >> $GITHUB_ENV
           echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
